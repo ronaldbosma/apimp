@@ -7,6 +7,10 @@
       "commandName": "Project",
       "commandLineArgs": "list"
     },
+    "list policy-files": {
+      "commandName": "Project",
+      "commandLineArgs": "list policy-files C:\\repos\\ronaldbosma\\apimp\\sample\\APIM.Policies.Sample"
+    },
     "list policy-expressions": {
       "commandName": "Project",
       "commandLineArgs": "list policy-expressions C:\\repos\\ronaldbosma\\apimp\\sample\\APIM.Policies.Sample\\APIM.Policies.Sample.csproj"

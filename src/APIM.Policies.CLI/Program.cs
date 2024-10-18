@@ -15,6 +15,7 @@ public static class Program
             config.AddBranch("list", list =>
             {
                 list.AddCommand<ListPolicyExpressionsCommand>("policy-expressions");
+                list.AddCommand<ListPolicyFilesCommand>("policy-files");
             });
         });
 

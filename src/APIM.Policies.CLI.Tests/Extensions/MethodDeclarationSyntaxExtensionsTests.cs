@@ -11,9 +11,12 @@ public class MethodDeclarationSyntaxExtensionsTests
     {
         //Arrange
         var source = """
-            public static bool MethodName(IPolicyContext policyContext)
+            internal class ClassName
             {
-                return true;
+                public static bool MethodName(IPolicyContext policyContext)
+                {
+                    return true;
+                }
             }
             """;
         var method = await MethodHelper.CreateMethodDeclarationSyntaxAsync(source);
@@ -23,9 +26,9 @@ public class MethodDeclarationSyntaxExtensionsTests
 
         //Assert
         var expectedResult = """
-            {
-                return true;
-            }
+                {
+                    return true;
+                }
 
             """;
         result.Should().Be(expectedResult);
@@ -36,11 +39,14 @@ public class MethodDeclarationSyntaxExtensionsTests
     {
         //Arrange
         var source = """
-            public static bool MethodName(IPolicyContext policyContext)
+            internal class ClassName
             {
-                var result = true;
-                // A comment
-                return result;
+                public static bool MethodName(IPolicyContext policyContext)
+                {
+                    var result = true;
+                    // A comment
+                    return result;
+                }
             }
             """;
         var method = await MethodHelper.CreateMethodDeclarationSyntaxAsync(source);
@@ -50,11 +56,11 @@ public class MethodDeclarationSyntaxExtensionsTests
 
         //Assert
         var expectedResult = """
-            {
-                var result = true;
-                // A comment
-                return result;
-            }
+                {
+                    var result = true;
+                    // A comment
+                    return result;
+                }
 
             """;
         result.Should().Be(expectedResult);
@@ -64,7 +70,12 @@ public class MethodDeclarationSyntaxExtensionsTests
     public async Task GetBody_MethodsHasSimpleBodyExpression_ExpressionReturned()
     {
         //Arrange
-        var source = "public static bool MethodName(IPolicyContext policyContext) => true;";
+        var source = """
+            internal class ClassName
+            {
+                public static bool MethodName(IPolicyContext policyContext) => true;
+            }
+            """;
         var method = await MethodHelper.CreateMethodDeclarationSyntaxAsync(source);
 
         //Act

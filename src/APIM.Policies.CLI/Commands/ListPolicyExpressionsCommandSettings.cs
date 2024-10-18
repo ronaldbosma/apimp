@@ -4,7 +4,7 @@ namespace APIM.Policies.CLI.Commands;
 
 internal class ListPolicyExpressionsCommandSettings : CommandSettings
 {
-    [Description("Path to the assembly containing the policy expressions")]
+    [Description("Path to the project containing the policy expressions")]
     [CommandArgument(0, "[SOURCE]")]
     public string? Source { get; init; }
 

@@ -10,14 +10,11 @@
     <outbound>
         <base />
         <choose>
-            <when condition="@(context.Response.StatusCode >= 400)">
+            <when condition="@method:APIM.Policies.Sample.EchoAPI.GetEcho.GetEchoExpressions.ResponseIsError">
                 <set-body>Error</set-body>
             </when>
             <otherwise>
-                <set-body>@{
-                    string response = "This is the response";
-                    return response;
-                }</set-body>
+                <set-body>@method:APIM.Policies.Sample.EchoAPI.GetEcho.GetEchoExpressions.TransformResponse</set-body>
             </otherwise>
         </choose>
     </outbound>

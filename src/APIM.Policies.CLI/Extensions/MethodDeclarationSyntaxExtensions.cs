@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using APIM.Policies.Core;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace APIM.Policies.CLI.Extensions;
@@ -36,5 +37,21 @@ internal static class MethodDeclarationSyntaxExtensions
         }
 
         throw new InvalidOperationException($"Unable to get full name of method {method.Identifier}");
+    }
+
+    public static bool IsPolicyExpression(this MethodDeclarationSyntax method, SemanticModel model)
+    {
+        if (method.ParameterList.Parameters.Count == 1)
+        {
+            var parameterType = method.ParameterList.Parameters[0].Type;
+
+            if (parameterType != null)
+            {
+                var parameterSymbloInfo = model.GetSymbolInfo(parameterType);
+                return parameterSymbloInfo.Symbol?.ToDisplayString() == typeof(IPolicyContext).FullName;
+            }
+        }
+
+        return false;
     }
 }

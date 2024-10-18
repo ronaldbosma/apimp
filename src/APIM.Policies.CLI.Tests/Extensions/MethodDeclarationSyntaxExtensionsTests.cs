@@ -13,16 +13,16 @@ public class MethodDeclarationSyntaxExtensionsTests
         var source = """
             internal class ClassName
             {
-                public static bool MethodName(IPolicyContext policyContext)
+                public static bool MethodName(IPolicyContext context)
                 {
                     return true;
                 }
             }
             """;
-        var methodSyntax = await MethodHelper.CreateMethodDeclarationSyntaxAsync(source);
+        var method = await MethodHelper.CreateMethodDeclarationSyntaxAsync(source);
 
         //Act
-        var result = methodSyntax.GetBody();
+        var result = method.GetBody();
 
         //Assert
         var expectedResult = """
@@ -41,7 +41,7 @@ public class MethodDeclarationSyntaxExtensionsTests
         var source = """
             internal class ClassName
             {
-                public static bool MethodName(IPolicyContext policyContext)
+                public static bool MethodName(IPolicyContext context)
                 {
                     var result = true;
                     // A comment
@@ -49,10 +49,10 @@ public class MethodDeclarationSyntaxExtensionsTests
                 }
             }
             """;
-        var methodSyntax = await MethodHelper.CreateMethodDeclarationSyntaxAsync(source);
+        var method = await MethodHelper.CreateMethodDeclarationSyntaxAsync(source);
 
         //Act
-        var result = methodSyntax.GetBody();
+        var result = method.GetBody();
 
         //Assert
         var expectedResult = """
@@ -73,13 +73,13 @@ public class MethodDeclarationSyntaxExtensionsTests
         var source = """
             internal class ClassName
             {
-                public static bool MethodName(IPolicyContext policyContext) => true;
+                public static bool MethodName(IPolicyContext context) => true;
             }
             """;
-        var methodSyntax = await MethodHelper.CreateMethodDeclarationSyntaxAsync(source);
+        var method = await MethodHelper.CreateMethodDeclarationSyntaxAsync(source);
 
         //Act
-        var result = methodSyntax.GetBody();
+        var result = method.GetBody();
 
         //Assert
         result.Should().Be("true");
@@ -94,7 +94,7 @@ public class MethodDeclarationSyntaxExtensionsTests
             {
                 internal class ClassName
                 {
-                    public static bool MethodName(IPolicyContext policyContext) => true;
+                    public static bool MethodName(IPolicyContext context) => true;
                 }
             }
             """;
@@ -116,7 +116,7 @@ public class MethodDeclarationSyntaxExtensionsTests
             namespace A.Namespace;
             internal class ClassName
             {
-                public static bool MethodName(IPolicyContext policyContext) => true;
+                public static bool MethodName(IPolicyContext context) => true;
             }
             """;
 
@@ -136,7 +136,7 @@ public class MethodDeclarationSyntaxExtensionsTests
         var source = """
             internal class ClassName
             {
-                public static bool MethodName(IPolicyContext policyContext) => true;
+                public static bool MethodName(IPolicyContext context) => true;
             }
             """;
 
@@ -147,5 +147,81 @@ public class MethodDeclarationSyntaxExtensionsTests
 
         //Assert
         result.Should().Be("ClassName.MethodName");
+    }
+
+    [TestMethod]
+    public async Task IsPolicyExpression_MethodHasOneArgumentOfTypeIPolicyContextAndNameContext_TrueReturned()
+    {
+        //Arrange
+        var source = """
+            internal class ClassName
+            {
+                public static bool MethodName(IPolicyContext context) => return true;
+            }
+            """;
+        var (syntax, model) = await MethodHelper.CreateMethodDeclarationSyntaxAndSemanticModelAsync(source);
+
+        //Act
+        var result = syntax.IsPolicyExpression(model);
+
+        //Assert
+        result.Should().BeTrue();
+    }
+
+    [TestMethod]
+    public async Task IsPolicyExpression_MethodHasPolicyContextArgumentWithFullname_TrueReturned()
+    {
+        //Arrange
+        var source = """
+            internal class ClassName
+            {
+                public static bool MethodName(APIM.Policies.Core.IPolicyContext context) => return true;
+            }
+            """;
+        var (syntax, model) = await MethodHelper.CreateMethodDeclarationSyntaxAndSemanticModelAsync(source);
+
+        //Act
+        var result = syntax.IsPolicyExpression(model);
+
+        //Assert
+        result.Should().BeTrue();
+    }
+
+    [TestMethod]
+    public async Task IsPolicyExpression_MethodHasNoArguments_FalseReturned()
+    {
+        //Arrange
+        var source = """
+            internal class ClassName
+            {
+                public static bool MethodName() => return true;
+            }
+            """;
+        var (syntax, model) = await MethodHelper.CreateMethodDeclarationSyntaxAndSemanticModelAsync(source);
+
+        //Act
+        var result = syntax.IsPolicyExpression(model);
+
+        //Assert
+        result.Should().BeFalse();
+    }
+
+    [TestMethod]
+    public async Task IsPolicyExpression_MethodHasArgumentWithWrongType_FalseReturned()
+    {
+        //Arrange
+        var source = """
+            internal class ClassName
+            {
+                public static bool MethodName(string context) => return true;
+            }
+            """;
+        var (syntax, model) = await MethodHelper.CreateMethodDeclarationSyntaxAndSemanticModelAsync(source);
+
+        //Act
+        var result = syntax.IsPolicyExpression(model);
+
+        //Assert
+        result.Should().BeFalse();
     }
 }

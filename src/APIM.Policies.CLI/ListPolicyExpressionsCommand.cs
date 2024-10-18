@@ -1,14 +1,11 @@
-﻿using APIM.Policies.Core;
+﻿using APIM.Policies.CLI.Extensions;
 using Microsoft.Build.Locator;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.MSBuild;
-using System.Reflection;
 
 namespace APIM.Policies.CLI
 {
     internal sealed class ListPolicyExpressionsCommand : AsyncCommand<ListPolicyExpressionsCommandSettings>
     {
-
         public override async Task<int> ExecuteAsync(CommandContext context, ListPolicyExpressionsCommandSettings settings)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(settings.Source, nameof(settings));
@@ -18,18 +15,19 @@ namespace APIM.Policies.CLI
             MSBuildLocator.RegisterDefaults();
             using var workspace = MSBuildWorkspace.Create();
             var project = await workspace.OpenProjectAsync(settings.Source);
+            var compilation = await project.GetCompilationAsync() ?? throw new Exception("Unable to load project compilation");
 
             foreach (var document in project.Documents)
             {
                 AnsiConsole.MarkupLine(document.Name);
 
                 var syntaxTree = await document.GetSyntaxTreeAsync() ?? throw new Exception("Unable to load syntax tree");
-                var root = await syntaxTree.GetRootAsync();
+                var semanticModel = compilation.GetSemanticModel(syntaxTree);
 
-                var methods = root.DescendantNodes().OfType<MethodDeclarationSyntax>();
-                foreach (var method in methods)
+                var policyExpressions = await syntaxTree.GetPolicyExpressionsAsync(semanticModel);
+                foreach (var policyExpression in policyExpressions)
                 {
-                    AnsiConsole.MarkupLine($"- {method.Identifier.Text}");
+                    AnsiConsole.MarkupLine($"- {policyExpression.Key}");
                 }
             }
 

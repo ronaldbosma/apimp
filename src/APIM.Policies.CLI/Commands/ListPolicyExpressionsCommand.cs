@@ -10,12 +10,12 @@ namespace APIM.Policies.CLI.Commands
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(settings.Source, nameof(settings));
 
-            AnsiConsole.MarkupLine("Load policy expressions from {0}", settings.Source);
+            AnsiConsole.WriteLine("Load policy expressions from {0}", settings.Source);
 
             var policyExpressions = await ProjectAnalyzer.GetPolicyExpressionsAsync(settings.Source);
             foreach (var policyExpression in policyExpressions)
             {
-                AnsiConsole.MarkupLine($"- {policyExpression.Key}");
+                AnsiConsole.WriteLine("- {0}", policyExpression.Key);
             }
 
             return 0;

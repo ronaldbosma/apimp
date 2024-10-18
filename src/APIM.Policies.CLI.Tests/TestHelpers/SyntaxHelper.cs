@@ -5,7 +5,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace APIM.Policies.CLI.Tests.TestHelpers;
 
-internal static class MethodHelper
+internal static class SyntaxHelper
 {
     public static async Task<MethodDeclarationSyntax> CreateMethodDeclarationSyntaxAsync(string source)
     {
@@ -19,10 +19,16 @@ internal static class MethodHelper
     {
         var syntaxTree = CSharpSyntaxTree.ParseText(source);
 
-        // Get the method syntax
         var root = await syntaxTree.GetRootAsync();
         var method = root.DescendantNodes().OfType<MethodDeclarationSyntax>().Single();
 
+        var model = CreateSemanticModel(syntaxTree);
+
+        return (method, model);
+    }
+
+    public static SemanticModel CreateSemanticModel(SyntaxTree syntaxTree)
+    {
         // Add an implicit using for APIM.Policies.Core so we can use IPolicyContext in code snippets without having to specify the name
         var implicitUsings = CSharpSyntaxTree.ParseText("global using APIM.Policies.Core;");
 
@@ -31,8 +37,6 @@ internal static class MethodHelper
 
         // Create the semantic model using the source syntax tree, implicint usings and assembly with IPolicyContext
         var compilation = CSharpCompilation.Create("TestCompilation", [syntaxTree, implicitUsings], [metadataReference]);
-        var model = compilation.GetSemanticModel(syntaxTree);
-
-        return (method, model);
+        return compilation.GetSemanticModel(syntaxTree);
     }
 }

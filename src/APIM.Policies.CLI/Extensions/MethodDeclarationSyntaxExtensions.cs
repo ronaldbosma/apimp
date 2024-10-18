@@ -1,5 +1,5 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Text;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace APIM.Policies.CLI.Extensions;
 
@@ -17,5 +17,25 @@ internal static class MethodDeclarationSyntaxExtensions
         }
 
         return string.Empty;
+    }
+
+    public static string GetFullName(this MethodDeclarationSyntax method, SemanticModel model)
+    {
+        var methodSymbol = model.GetDeclaredSymbol(method);
+        if (methodSymbol != null)
+        {
+            var containingClass = methodSymbol.ContainingType;
+            var fullName = $"{methodSymbol.ContainingType.Name}.{methodSymbol.Name}";
+
+            var containingNamespace = methodSymbol.ContainingType.ContainingNamespace;
+            if (!containingNamespace.IsGlobalNamespace)
+            {
+                fullName = $"{containingNamespace}.{fullName}";
+            }
+
+            return fullName;
+        }
+
+        throw new InvalidOperationException($"Unable to get full name of method {method.Identifier}");
     }
 }

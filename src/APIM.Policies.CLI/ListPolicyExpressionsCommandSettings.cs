@@ -1,13 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
-namespace APIM.Policies.CLI
+namespace APIM.Policies.CLI;
+
+internal class ListPolicyExpressionsCommandSettings : CommandSettings
 {
-    internal class ListPolicyExpressionsCommandSettings : CommandSettings
-    {
+    [Description("Path to the assembly containing the policy expressions")]
+    [CommandArgument(0, "[SOURCE]")]
+    public string? Source { get; init; }
 
+    public override ValidationResult Validate()
+    {
+        if (string.IsNullOrWhiteSpace(Source))
+        {
+            return ValidationResult.Error("Specify a source");
+        }
+        if (!File.Exists(Source))
+        {
+            return ValidationResult.Error($"Unable to find source {Source}");
+        }
+        
+        return ValidationResult.Success();
     }
 }

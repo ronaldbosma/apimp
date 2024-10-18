@@ -9,7 +9,7 @@
     },
     "list policy-expressions": {
       "commandName": "Project",
-      "commandLineArgs": "list policy-expressions"
+      "commandLineArgs": "list policy-expressions C:\\repos\\ronaldbosma\\apimp\\sample\\APIM.Policies.Sample\\bin\\Debug\\net8.0\\APIM.Policies.Sample.dll"
     }
   }
 }

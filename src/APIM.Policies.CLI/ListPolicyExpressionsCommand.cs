@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using APIM.Policies.Core;
+using System.Reflection;
 
 namespace APIM.Policies.CLI
 {
@@ -10,7 +7,11 @@ namespace APIM.Policies.CLI
     {
         public override int Execute(CommandContext context, ListPolicyExpressionsCommandSettings settings)
         {
-            AnsiConsole.Markup("Policy expressions");
+            ArgumentException.ThrowIfNullOrWhiteSpace(settings.Source, nameof(settings));
+
+            AnsiConsole.MarkupLine("Load policy expressions from {0}", settings.Source);
+
+
             return 0;
         }
     }

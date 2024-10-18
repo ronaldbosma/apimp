@@ -22,7 +22,13 @@ public class MethodDeclarationSyntaxExtensionsTests
         var result = method.GetBody();
 
         //Assert
-        result.Should().Be("    return true;");
+        var expectedResult = """
+            {
+                return true;
+            }
+
+            """;
+        result.Should().Be(expectedResult);
     }
 
     [TestMethod]
@@ -44,9 +50,12 @@ public class MethodDeclarationSyntaxExtensionsTests
 
         //Assert
         var expectedResult = """
+            {
                 var result = true;
                 // A comment
                 return result;
+            }
+
             """;
         result.Should().Be(expectedResult);
     }

@@ -9,25 +9,7 @@ internal static class MethodDeclarationSyntaxExtensions
     {
         if (method.Body != null)
         {
-            // We want the 'inner' body without the surrounding { and }.
-            // So, we're not using method.Body.ToFullString(), but looping over statements of the body.
-            var statements = method.Body.Statements;
-
-            var methodBodyWithoutBraces = new StringBuilder();
-            foreach (var statement in statements)
-            {
-                methodBodyWithoutBraces.Append(statement.ToFullString());
-            }
-            
-            var body = methodBodyWithoutBraces.ToString();
-
-            // If the body ends with a carriage return and line feed, remove them
-            if (body.EndsWith("\r\n"))
-            {
-                body = body.Remove(body.Length - "\r\n".Length);
-            }
-
-            return body;
+            return method.Body.ToFullString();
         }
         else if (method.ExpressionBody != null)
         {

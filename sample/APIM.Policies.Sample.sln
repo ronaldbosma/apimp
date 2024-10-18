@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIM.Policies.Sample", "APIM.Policies.Sample\APIM.Policies.Sample.csproj", "{AC03D9E2-AEEE-45AA-8169-E29737CB7DB9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIM.Policies.Core", "..\src\APIM.Policies.Core\APIM.Policies.Core.csproj", "{6C7F62AF-32A6-468D-BB5D-DEC753947372}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC03D9E2-AEEE-45AA-8169-E29737CB7DB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC03D9E2-AEEE-45AA-8169-E29737CB7DB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC03D9E2-AEEE-45AA-8169-E29737CB7DB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC03D9E2-AEEE-45AA-8169-E29737CB7DB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C7F62AF-32A6-468D-BB5D-DEC753947372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C7F62AF-32A6-468D-BB5D-DEC753947372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C7F62AF-32A6-468D-BB5D-DEC753947372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C7F62AF-32A6-468D-BB5D-DEC753947372}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B409C4AA-200A-4B37-95CB-4BD607016BB5}
+	EndGlobalSection
+EndGlobal

@@ -17,6 +17,7 @@ public static class Program
                 list.AddCommand<ListPolicyExpressionsCommand>("policy-expressions");
                 list.AddCommand<ListPolicyFilesCommand>("policy-files");
             });
+            config.AddCommand<MergeCommand>("merge");
         });
 
         return app.Run(args);

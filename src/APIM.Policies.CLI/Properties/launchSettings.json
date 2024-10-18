@@ -14,6 +14,10 @@
     "list policy-expressions": {
       "commandName": "Project",
       "commandLineArgs": "list policy-expressions C:\\repos\\ronaldbosma\\apimp\\sample\\APIM.Policies.Sample\\APIM.Policies.Sample.csproj"
+    },
+    "merge": {
+      "commandName": "Project",
+      "commandLineArgs": "merge C:\\repos\\ronaldbosma\\apimp\\sample\\APIM.Policies.Sample\\APIM.Policies.Sample.csproj"
     }
   }
 }

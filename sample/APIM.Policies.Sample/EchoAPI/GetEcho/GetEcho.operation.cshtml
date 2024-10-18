@@ -1,0 +1,28 @@
+﻿<policies>
+    <inbound>
+        <base />
+    </inbound>
+
+    <backend>
+        <base />
+    </backend>
+
+    <outbound>
+        <base />
+        <choose>
+            <when condition="@(context.Response.StatusCode >= 400)">
+                <set-body>Error</set-body>
+            </when>
+            <otherwise>
+                <set-body>@{
+                    string response = "This is the response";
+                    return response;
+                }</set-body>
+            </otherwise>
+        </choose>
+    </outbound>
+    
+    <on-error>
+        <base />
+    </on-error>
+</policies>

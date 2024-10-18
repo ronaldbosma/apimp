@@ -1,0 +1,34 @@
+﻿<policies>
+    <inbound>
+        <base />
+        <set-body>@{
+            return "This is the request";
+        }</set-body>
+    </inbound>
+
+    <backend>
+        <base />
+    </backend>
+
+    <outbound>
+        <base />
+        <choose>
+            <when condition="@(context.Response.StatusCode == 400)">
+                <set-body>Bad Request</set-body>
+            </when>
+            <when condition="@(context.Response.StatusCode == 404)">
+                <set-body>Not Found</set-body>
+            </when>
+            <otherwise>
+                <set-body>@{
+                    string response = "This is the response";
+                    return response;
+                }</set-body>
+            </otherwise>
+        </choose>
+    </outbound>
+    
+    <on-error>
+        <base />
+    </on-error>
+</policies>

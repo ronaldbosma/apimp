@@ -9,11 +9,12 @@ internal class ListPolicyFilesCommandSettings : CommandSettings
     [CommandArgument(0, "[FOLDER]")]
     public string? Folder { get; init; }
 
+    [Description("Specifies the filter to select the policy files. Default value: *.cshtml")]
     [CommandOption("-i|--include")]
     [DefaultValue("*.cshtml")]
     public string? Include { get; init; }
 
-    [Description("Specifies ")]
+    [Description("Specifies the extension of policy files to ignore. Default value: .generated.cshtml")]
     [CommandOption("-e|--exclude")]
     [DefaultValue(".generated.cshtml")]
     public string? Exclude { get; init; }

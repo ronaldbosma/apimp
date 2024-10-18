@@ -1,7 +1,9 @@
 ﻿using APIM.Policies.CLI.Analyzers;
+using System.ComponentModel;
 
 namespace APIM.Policies.CLI.Commands
 {
+    [Description("Lists policy expressions")]
     internal sealed class ListPolicyExpressionsCommand : AsyncCommand<ListPolicyExpressionsCommandSettings>
     {
         public override async Task<int> ExecuteAsync(CommandContext context, ListPolicyExpressionsCommandSettings settings)

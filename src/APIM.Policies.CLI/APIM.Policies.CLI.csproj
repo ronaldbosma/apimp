@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>APIM.Policies.CLI</RootNamespace>
+    <AssemblyName>APIM.Policies.CLI</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>apimp</ToolCommandName>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <PackageId>APIM.Policies.CLI</PackageId>
+    <Description>Tool to merge policy expressions into policy files</Description>
+    <Authors>Ronald Bosma</Authors>
+    <PackageTags>api-management;apim</PackageTags>
+    <PackageProjectUrl>https://github.com/ronaldbosma/apimp</PackageProjectUrl>
+    <PackageReleaseNotes>https://github.com/ronaldbosma/apimp/releases</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/ronaldbosma/apimp</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="" Visible="false" />
+  </ItemGroup>
+</Project>

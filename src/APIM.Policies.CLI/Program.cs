@@ -1,4 +1,6 @@
-﻿namespace APIM.Policies.CLI;
+﻿using APIM.Policies.CLI.Commands;
+
+namespace APIM.Policies.CLI;
 
 public static class Program
 {

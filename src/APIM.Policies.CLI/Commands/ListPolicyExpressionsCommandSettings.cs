@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace APIM.Policies.CLI;
+namespace APIM.Policies.CLI.Commands;
 
 internal class ListPolicyExpressionsCommandSettings : CommandSettings
 {
@@ -18,7 +18,7 @@ internal class ListPolicyExpressionsCommandSettings : CommandSettings
         {
             return ValidationResult.Error($"Unable to find source {Source}");
         }
-        
+
         return ValidationResult.Success();
     }
 }

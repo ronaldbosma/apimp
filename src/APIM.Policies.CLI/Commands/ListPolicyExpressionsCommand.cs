@@ -1,9 +1,6 @@
 ﻿using APIM.Policies.CLI.Analyzers;
-using APIM.Policies.CLI.Extensions;
-using Microsoft.Build.Locator;
-using Microsoft.CodeAnalysis.MSBuild;
 
-namespace APIM.Policies.CLI
+namespace APIM.Policies.CLI.Commands
 {
     internal sealed class ListPolicyExpressionsCommand : AsyncCommand<ListPolicyExpressionsCommandSettings>
     {

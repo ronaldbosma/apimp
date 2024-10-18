@@ -24,7 +24,6 @@ internal static class MethodDeclarationSyntaxExtensions
         var methodSymbol = model.GetDeclaredSymbol(method);
         if (methodSymbol != null)
         {
-            var containingClass = methodSymbol.ContainingType;
             var fullName = $"{methodSymbol.ContainingType.Name}.{methodSymbol.Name}";
 
             var containingNamespace = methodSymbol.ContainingType.ContainingNamespace;

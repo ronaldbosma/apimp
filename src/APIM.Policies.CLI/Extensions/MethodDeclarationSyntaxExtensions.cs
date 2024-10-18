@@ -41,17 +41,19 @@ internal static class MethodDeclarationSyntaxExtensions
 
     public static bool IsPolicyExpression(this MethodDeclarationSyntax method, SemanticModel model)
     {
-        if (method.ParameterList.Parameters.Count == 1)
+        if (method.ParameterList.Parameters.Count != 1 ||
+            method.ParameterList.Parameters[0].Identifier.ValueText != "context")
         {
-            var parameterType = method.ParameterList.Parameters[0].Type;
-
-            if (parameterType != null)
-            {
-                var parameterSymbloInfo = model.GetSymbolInfo(parameterType);
-                return parameterSymbloInfo.Symbol?.ToDisplayString() == typeof(IPolicyContext).FullName;
-            }
+            return false;
         }
 
-        return false;
+        var parameterType = method.ParameterList.Parameters[0].Type;
+        if (parameterType == null)
+        {
+            return false;
+        }
+
+        var parameterSymbloInfo = model.GetSymbolInfo(parameterType);
+        return parameterSymbloInfo.Symbol?.ToDisplayString() == typeof(IPolicyContext).FullName;
     }
 }

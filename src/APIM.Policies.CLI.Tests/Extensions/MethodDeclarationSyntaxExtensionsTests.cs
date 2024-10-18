@@ -188,6 +188,25 @@ public class MethodDeclarationSyntaxExtensionsTests
     }
 
     [TestMethod]
+    public async Task IsPolicyExpression_MethodHasOneArgumentOfTypeIPolicyContextButNameIsNotContext_TrueReturned()
+    {
+        //Arrange
+        var source = """
+            internal class ClassName
+            {
+                public static bool MethodName(IPolicyContext notContext) => return true;
+            }
+            """;
+        var (syntax, model) = await MethodHelper.CreateMethodDeclarationSyntaxAndSemanticModelAsync(source);
+
+        //Act
+        var result = syntax.IsPolicyExpression(model);
+
+        //Assert
+        result.Should().BeFalse();
+    }
+
+    [TestMethod]
     public async Task IsPolicyExpression_MethodHasNoArguments_FalseReturned()
     {
         //Arrange

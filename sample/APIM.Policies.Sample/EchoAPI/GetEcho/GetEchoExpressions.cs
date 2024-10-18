@@ -1,4 +1,4 @@
-﻿namespace APIM.Policies.Sample.EchoAPI.PostEcho;
+﻿namespace APIM.Policies.Sample.EchoAPI.GetEcho;
 
 internal class GetEchoExpressions
 {

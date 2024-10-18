@@ -25,7 +25,8 @@ internal static class MethodDeclarationSyntaxExtensions
     public static bool IsPolicyExpression(this MethodDeclarationSyntax method, SemanticModel model)
     {
         if (method.ParameterList.Parameters.Count != 1 ||
-            method.ParameterList.Parameters[0].Identifier.ValueText != "context")
+            method.ParameterList.Parameters[0].Identifier.ValueText != "context" ||
+            method.ReturnType.ToString() == "void")
         {
             return false;
         }

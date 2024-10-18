@@ -246,6 +246,25 @@ public class MethodDeclarationSyntaxExtensionsTests
     }
 
     [TestMethod]
+    public async Task IsPolicyExpression_MethodReturnsVoid_FalseReturned()
+    {
+        //Arrange
+        var source = """
+            internal class ClassName
+            {
+                public static void MethodName(IPolicyContext context) {}
+            }
+            """;
+        var (syntax, model) = await SyntaxHelper.CreateMethodDeclarationSyntaxAndSemanticModelAsync(source);
+
+        //Act
+        var result = syntax.IsPolicyExpression(model);
+
+        //Assert
+        result.Should().BeFalse();
+    }
+
+    [TestMethod]
     public async Task ToPolicyExpression_MethodWithExpressionBody_PolicyExpressionReturned()
     {
         //Arrange

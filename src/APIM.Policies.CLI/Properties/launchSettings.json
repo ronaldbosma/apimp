@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "APIM.Policies.CLI": {
+      "commandName": "Project"
+    },
+    "list": {
+      "commandName": "Project",
+      "commandLineArgs": "list"
+    },
+    "list policy-expressions": {
+      "commandName": "Project",
+      "commandLineArgs": "list policy-expressions"
+    }
+  }
+}

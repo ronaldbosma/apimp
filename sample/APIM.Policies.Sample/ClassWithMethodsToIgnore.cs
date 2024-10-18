@@ -8,7 +8,7 @@ namespace APIM.Policies.Sample;
 
 internal class ClassWithMethodsToIgnore
 {
-    public void ShouldBeIgnoredBecauseItHasNoReturnType(IPolicyContext policyContext)
+    public void ShouldBeIgnoredBecauseItHasNoReturnType(IPolicyContext context)
     {
     }
 }

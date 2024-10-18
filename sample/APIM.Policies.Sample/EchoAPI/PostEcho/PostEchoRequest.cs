@@ -2,7 +2,7 @@
 
 public class PostEchoRequest
 {
-    public static string Transform(IPolicyContext policyContext)
+    public static string Transform(IPolicyContext context)
     {
         return "This is the request";
     }

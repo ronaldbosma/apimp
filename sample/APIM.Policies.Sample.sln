@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIM.Policies.Sample", "API
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIM.Policies.Context", "..\src\APIM.Policies.Context\APIM.Policies.Context.csproj", "{BC8DFCF2-83E9-4EB6-B3A7-E305D40E10F4}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIM.Policies.Context.Builder", "..\src\APIM.Policies.Context.Builder\APIM.Policies.Context.Builder.csproj", "{56736F3B-CD6C-47DF-99E8-281C6F7CE458}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIM.Policies.Sample.Tests", "APIM.Policies.Sample.Tests\APIM.Policies.Sample.Tests.csproj", "{E9AC9BF8-D46C-4B24-8D69-63D7EB218520}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{BC8DFCF2-83E9-4EB6-B3A7-E305D40E10F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC8DFCF2-83E9-4EB6-B3A7-E305D40E10F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC8DFCF2-83E9-4EB6-B3A7-E305D40E10F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56736F3B-CD6C-47DF-99E8-281C6F7CE458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56736F3B-CD6C-47DF-99E8-281C6F7CE458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56736F3B-CD6C-47DF-99E8-281C6F7CE458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56736F3B-CD6C-47DF-99E8-281C6F7CE458}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9AC9BF8-D46C-4B24-8D69-63D7EB218520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9AC9BF8-D46C-4B24-8D69-63D7EB218520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9AC9BF8-D46C-4B24-8D69-63D7EB218520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9AC9BF8-D46C-4B24-8D69-63D7EB218520}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

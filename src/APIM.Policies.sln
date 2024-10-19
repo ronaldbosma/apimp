@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIM.Policies.CLI.Tests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIM.Policies.Context", "APIM.Policies.Context\APIM.Policies.Context.csproj", "{D4F46F19-DE79-43E2-9EE1-321B5AD3D9C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIM.Policies.Context.Builder", "APIM.Policies.Context.Builder\APIM.Policies.Context.Builder.csproj", "{A5945319-4734-434D-8E1E-48C32C73626E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D4F46F19-DE79-43E2-9EE1-321B5AD3D9C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4F46F19-DE79-43E2-9EE1-321B5AD3D9C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4F46F19-DE79-43E2-9EE1-321B5AD3D9C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5945319-4734-434D-8E1E-48C32C73626E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5945319-4734-434D-8E1E-48C32C73626E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5945319-4734-434D-8E1E-48C32C73626E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5945319-4734-434D-8E1E-48C32C73626E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

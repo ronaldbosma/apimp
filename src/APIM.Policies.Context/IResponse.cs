@@ -1,6 +1,6 @@
 ﻿namespace APIM.Policies.Context;
 
-public class IResponse
+public interface IResponse
 {
     public int StatusCode { get; }
 }

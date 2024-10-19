@@ -25,10 +25,14 @@ internal static class MethodDeclarationSyntaxExtensions
 
     public static bool IsPolicyExpression(this MethodDeclarationSyntax method, SemanticModel model)
     {
-        if (method.ParameterList.Parameters.Count != 1 ||
-            method.ParameterList.Parameters[0].Identifier.ValueText != "context" ||
-            (method.ReturnType is PredefinedTypeSyntax predefinedType && predefinedType.Keyword.IsKind(SyntaxKind.VoidKeyword)) ||
-            !method.Modifiers.Any(SyntaxKind.StaticKeyword))
+        return method.HasContextParameter(model) && method.IsStatic() && !method.ReturnsVoid();
+    }
+
+    private static bool HasContextParameter(this MethodDeclarationSyntax method, SemanticModel model)
+    {
+        bool hasContextParameter = method.ParameterList.Parameters.Count == 1 &&
+                                   method.ParameterList.Parameters[0].Identifier.ValueText == "context";
+        if (!hasContextParameter)
         {
             return false;
         }
@@ -41,6 +45,17 @@ internal static class MethodDeclarationSyntaxExtensions
 
         var parameterSymbloInfo = model.GetSymbolInfo(parameterType);
         return parameterSymbloInfo.Symbol?.ToDisplayString() == typeof(IProxyRequestContext).FullName;
+    }
+
+    private static bool ReturnsVoid(this MethodDeclarationSyntax method)
+    {
+        return method.ReturnType is PredefinedTypeSyntax predefinedType &&
+               predefinedType.Keyword.IsKind(SyntaxKind.VoidKeyword);
+    }
+
+    private static bool IsStatic(this MethodDeclarationSyntax method)
+    {
+        return method.Modifiers.Any(SyntaxKind.StaticKeyword);
     }
 
     public static string GetFullName(this MethodDeclarationSyntax method, SemanticModel model)

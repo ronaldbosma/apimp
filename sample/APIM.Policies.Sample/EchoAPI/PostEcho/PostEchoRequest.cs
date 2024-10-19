@@ -2,8 +2,5 @@
 
 public class PostEchoRequest
 {
-    public static string Transform(IProxyRequestContext context)
-    {
-        return "This is the request";
-    }
+    public static string Transform(IProxyRequestContext context) => "This is the request";
 }

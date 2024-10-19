@@ -40,9 +40,9 @@ namespace APIM.Policies.Sample.EchoAPI.GetEcho;
 
 internal class Expressions
 {
-    public static bool ResponseIsError(IPolicyContext context) => context.Response.StatusCode >= 400;
+    public static bool ResponseIsError(IProxyRequestContext context) => context.Response.StatusCode >= 400;
 
-    public static string TransformResponse(IPolicyContext context)
+    public static string TransformResponse(IProxyRequestContext context)
     {
         string response = "This is the response";
         return response;
@@ -51,7 +51,7 @@ internal class Expressions
 ```
 
 Each policy expression method must:
-- have a single parameter of type `IPolicyContext` with name `context`
+- have a single parameter of type `IProxyRequestContext` with name `context`
 - have a return type
 - be static
 

@@ -1,1 +1,1 @@
-﻿global using APIM.Policies.Core;
+﻿global using APIM.Policies.Context;

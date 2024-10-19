@@ -1,4 +1,4 @@
-﻿using APIM.Policies.Core;
+﻿using APIM.Policies.Context;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -29,9 +29,9 @@ internal static class SyntaxHelper
 
     public static SemanticModel CreateSemanticModel(SyntaxTree syntaxTree)
     {
-        // Add an implicit using for APIM.Policies.Core so we can use IPolicyContext in code snippets without having to specify the name
-        var implicitUsings = CSharpSyntaxTree.ParseText("global using APIM.Policies.Core;");
-
+        // Add an implicit using for APIM.Policies.Context so we can use IPolicyContext in code snippets without having to specify the name
+        var implicitUsings = CSharpSyntaxTree.ParseText($"global using {typeof(IPolicyContext).Namespace};");
+        
         // We load the assembly containing IPolicyContext so we can reference it in our code snippets.
         var metadataReference = MetadataReference.CreateFromFile(typeof(IPolicyContext).Assembly.Location);
 

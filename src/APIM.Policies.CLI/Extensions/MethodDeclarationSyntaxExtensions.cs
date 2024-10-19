@@ -1,5 +1,5 @@
 ﻿using APIM.Policies.CLI.Models;
-using APIM.Policies.Core;
+using APIM.Policies.Context;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 

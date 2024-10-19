@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\APIM.Policies.CLI\APIM.Policies.CLI.csproj" />
-    <ProjectReference Include="..\APIM.Policies.Core\APIM.Policies.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

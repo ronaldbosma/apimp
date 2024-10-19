@@ -6,8 +6,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-
   <ItemGroup>
-    <ProjectReference Include="..\..\src\APIM.Policies.Core\APIM.Policies.Core.csproj" />
+    <ProjectReference Include="..\..\src\APIM.Policies.Context\APIM.Policies.Context.csproj" />
   </ItemGroup>
 </Project>

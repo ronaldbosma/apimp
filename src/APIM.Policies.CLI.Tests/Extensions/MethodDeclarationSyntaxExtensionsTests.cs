@@ -176,7 +176,7 @@ public class MethodDeclarationSyntaxExtensionsTests
         var source = """
             internal class ClassName
             {
-                public static bool MethodName(APIM.Policies.Core.IPolicyContext context) => return true;
+                public static bool MethodName(APIM.Policies.Context.IPolicyContext context) => return true;
             }
             """;
         var (syntax, model) = await SyntaxHelper.CreateMethodDeclarationSyntaxAndSemanticModelAsync(source);

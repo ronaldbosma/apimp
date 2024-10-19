@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\APIM.Policies.Context.Builder\APIM.Policies.Context.Builder.csproj" />
+    <ProjectReference Include="..\..\src\APIM.Policies.Context\APIM.Policies.Context.csproj" />
     <ProjectReference Include="..\APIM.Policies.Sample\APIM.Policies.Sample.csproj" />
   </ItemGroup>
 

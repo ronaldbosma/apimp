@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIM.Policies.Sample.Tests"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIM.Policies.Context.Abstractions", "..\src\APIM.Policies.Context.Abstractions\APIM.Policies.Context.Abstractions.csproj", "{8704CED4-E9DD-4197-A2B0-41F75176E948}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIM.Policies.Context", "..\src\APIM.Policies.Context\APIM.Policies.Context.csproj", "{6D18F52F-68FA-4E07-B6F6-5F09ADD7C991}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8704CED4-E9DD-4197-A2B0-41F75176E948}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8704CED4-E9DD-4197-A2B0-41F75176E948}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8704CED4-E9DD-4197-A2B0-41F75176E948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D18F52F-68FA-4E07-B6F6-5F09ADD7C991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D18F52F-68FA-4E07-B6F6-5F09ADD7C991}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D18F52F-68FA-4E07-B6F6-5F09ADD7C991}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D18F52F-68FA-4E07-B6F6-5F09ADD7C991}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

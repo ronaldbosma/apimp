@@ -1,5 +1,5 @@
 using APIM.Policies.Context;
-using APIM.Policies.Context.Builder;
+using APIM.Policies.Context.Abstractions;
 using APIM.Policies.Sample.EchoAPI.GetEcho;
 using FluentAssertions;
 

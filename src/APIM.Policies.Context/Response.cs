@@ -1,4 +1,4 @@
-﻿namespace APIM.Policies.Context.Builder;
+﻿namespace APIM.Policies.Context;
 
 internal record Response : IResponse
 {

@@ -9,15 +9,15 @@
     },
     "list policy-files": {
       "commandName": "Project",
-      "commandLineArgs": "list policy-files C:\\repos\\ronaldbosma\\apimp\\sample\\APIM.Policies.Sample"
+      "commandLineArgs": "list policy-files ..\\..\\..\\..\\..\\sample\\APIM.Policies.Sample"
     },
     "list policy-expressions": {
       "commandName": "Project",
-      "commandLineArgs": "list policy-expressions C:\\repos\\ronaldbosma\\apimp\\sample\\APIM.Policies.Sample\\APIM.Policies.Sample.csproj"
+      "commandLineArgs": "list policy-expressions ..\\..\\..\\..\\..\\sample\\APIM.Policies.Sample\\APIM.Policies.Sample.csproj"
     },
     "merge": {
       "commandName": "Project",
-      "commandLineArgs": "merge C:\\repos\\ronaldbosma\\apimp\\sample\\APIM.Policies.Sample\\APIM.Policies.Sample.csproj"
+      "commandLineArgs": "merge ..\\..\\..\\..\\..\\sample\\APIM.Policies.Sample\\APIM.Policies.Sample.csproj"
     }
   }
 }

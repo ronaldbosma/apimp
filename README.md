@@ -9,7 +9,9 @@ API Management provides the ability to use C# [policy expressions](https://learn
 This is a powerful feature that allows you to create dynamic policies that can be used to transform requests and responses. 
 The problem is that the policy expressions are not easy to work with, because you define them inside XML files. 
 
-This project gives developers the ability to code there policy expressions in a .NET project and merge these into XML policy files that can be imported into API Management.
+This project gives developers the ability to code there policy expressions in a .NET project and merge these into XML policy files that can be imported into API Management. 
+Making it possible to unit test and locally debug the policy expressions. 
+It also gives you intellisense in your IDE, making it easier to write them.
 
 ## Example
 
@@ -29,8 +31,6 @@ The following example shows a policy snippet with a single statement expressions
     </otherwise>
 </choose>
 ```
-
-Because the expressions are defined in the XML file, they're difficult to unit test and you don't have intelligence or syntax highlighting.
 
 To extract the expressions into a .NET project, you would create a class with static methods that represent the expressions. 
 The class would look like this:

@@ -35,10 +35,8 @@ public class ExpressionsTests
     public void ResponseIsError_StatusCodeIs400OrLarger_TrueReturned(int statusCode)
     {
         //Arrange
-        var builder = new ProxyRequestContextBuilder();
-        builder.Response.WithStatusCode(statusCode);
-
-        IProxyRequestContext context = builder.Build();
+        var response = new ResponseBuilder().WithStatusCode(statusCode);
+        var context = new ProxyRequestContextBuilder().WithResponse(response).Build();
 
         //Act
         bool result = Expressions.ResponseIsError(context);

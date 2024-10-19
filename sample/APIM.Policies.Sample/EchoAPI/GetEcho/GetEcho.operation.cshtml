@@ -10,11 +10,11 @@
     <outbound>
         <base />
         <choose>
-            <when condition="@expression:APIM.Policies.Sample.EchoAPI.GetEcho.GetEchoExpressions.ResponseIsError">
+            <when condition="@expression:APIM.Policies.Sample.EchoAPI.GetEcho.Expressions.ResponseIsError">
                 <set-body>Error</set-body>
             </when>
             <otherwise>
-                <set-body>@expression:APIM.Policies.Sample.EchoAPI.GetEcho.GetEchoExpressions.TransformResponse</set-body>
+                <set-body>@expression:APIM.Policies.Sample.EchoAPI.GetEcho.Expressions.TransformResponse</set-body>
             </otherwise>
         </choose>
     </outbound>

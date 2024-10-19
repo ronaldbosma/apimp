@@ -1,6 +1,6 @@
 ﻿namespace APIM.Policies.Sample.EchoAPI.GetEcho;
 
-internal class GetEchoExpressions
+internal class Expressions
 {
     //TODO: return context.Response.StatusCode >= 400
     public static bool ResponseIsError(IPolicyContext context) => true;

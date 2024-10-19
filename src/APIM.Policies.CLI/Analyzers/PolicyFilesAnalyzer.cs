@@ -16,7 +16,7 @@ internal class PolicyFilesAnalyzer
         var result = new List<PolicyFile>();
         foreach (var filePath in policyFiles)
         {
-            const string referencePattern = @"@method:([a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*)";
+            const string referencePattern = @"@expression:([a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*)";
             var content = await File.ReadAllTextAsync(filePath);
 
             var matches = Regex.Matches(content, referencePattern);

@@ -1,7 +1,7 @@
 ﻿<policies>
     <inbound>
         <base />
-        <set-body>@method:APIM.Policies.Sample.EchoAPI.PostEcho.PostEchoRequest.Transform</set-body>
+        <set-body>@expression:APIM.Policies.Sample.EchoAPI.PostEcho.PostEchoRequest.Transform</set-body>
     </inbound>
 
     <backend>
@@ -11,14 +11,14 @@
     <outbound>
         <base />
         <choose>
-            <when condition="@method:APIM.Policies.Sample.EchoAPI.PostEcho.PostEchoConditions.ResponseIsBadRequest">
+            <when condition="@expression:APIM.Policies.Sample.EchoAPI.PostEcho.PostEchoConditions.ResponseIsBadRequest">
                 <set-body>Bad Request</set-body>
             </when>
-            <when condition="@method:APIM.Policies.Sample.EchoAPI.PostEcho.PostEchoConditions.ResponseIsNotFound">
+            <when condition="@expression:APIM.Policies.Sample.EchoAPI.PostEcho.PostEchoConditions.ResponseIsNotFound">
                 <set-body>Not Found</set-body>
             </when>
             <otherwise>
-                <set-body>@method:APIM.Policies.Sample.EchoAPI.PostEcho.PostEchoResponse.Transform</set-body>
+                <set-body>@expression:APIM.Policies.Sample.EchoAPI.PostEcho.PostEchoResponse.Transform</set-body>
             </otherwise>
         </choose>
     </outbound>

@@ -14,7 +14,7 @@ internal record PolicyFile
         foreach (var reference in PolicyExpressionReferences)
         {
             var policyExpression = policyExpressions[reference];
-            generatedContent = generatedContent.Replace($"@method:{reference}", policyExpression.GetEnclosedBody());
+            generatedContent = generatedContent.Replace($"@expression:{reference}", policyExpression.GetEnclosedBody());
         }
 
         return generatedContent;

@@ -8,8 +8,6 @@ internal record PolicyExpression
 
     public string GetEnclosedBody()
     {
-        return IsSingleStatement
-            ? $"@({Body})"
-            : $"@{Body.TrimStart()}";
+        return IsSingleStatement ? $"@({Body.Trim()})" : $"@{Body.Trim()}";
     }
 }

@@ -3,35 +3,33 @@ namespace APIM.Policies.Context;
 
 internal record ProxyRequestContext : IProxyRequestContext
 {
+    public Guid RequestId { get; init; } = Guid.NewGuid();
+
+    public DateTime Timestamp { get; init; } = DateTime.UtcNow;
+
+    public required IRequest Request { get; init; }
+
     public required IResponse Response { get; init; }
 
-    public Guid RequestId { get; init; }
+    public IApi? Api { get; init; }
 
-    public DateTime Timestamp { get; init; }
+    public IOperation? Operation { get; init; }
 
-    public IRequest Request { get; init; }
+    public ISubscription? Subscription { get; init; }
 
-    public IApi Api { get; init; }
+    public IUser? User { get; init; }
 
-    public IOperation Operation { get; init; }
+    public IProduct? Product { get; init; }
 
-    public ISubscription Subscription { get; init; }
+    public ProxyError? LastError { get; init; }
 
-    public IUser User { get; init; }
+    public required IDeployment Deployment { get; init; }
 
-    public IProduct Product { get; init; }
-
-    public ProxyError LastError { get; init; }
-
-    public IDeployment Deployment { get; init; }
-
-    public IReadOnlyDictionary<string, object> Variables { get; init; }
+    public IReadOnlyDictionary<string, object> Variables { get; init; } = new Dictionary<string, object>();
 
     public bool Tracing { get; init; }
 
     public TimeSpan Elapsed { get; init; }
-
-    public IGraphQLProperties GraphQL { get; init; }
 
     public void Trace(string message)
     {

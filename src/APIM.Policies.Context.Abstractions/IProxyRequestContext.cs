@@ -10,17 +10,17 @@
 
         IResponse Response { get; }
 
-        IApi Api { get; }
+        IApi? Api { get; }
 
-        IOperation Operation { get; }
+        IOperation? Operation { get; }
 
-        ISubscription Subscription { get; }
+        ISubscription? Subscription { get; }
 
-        IUser User { get; }
+        IUser? User { get; }
 
-        IProduct Product { get; }
+        IProduct? Product { get; }
 
-        ProxyError LastError { get; }
+        ProxyError? LastError { get; }
 
         IDeployment Deployment { get; }
 
@@ -30,7 +30,8 @@
 
         TimeSpan Elapsed { get; }
 
-        IGraphQLProperties GraphQL { get; }
+        //TODO: check how to handle this property. Raises an exception in REST API's
+        //IGraphQLProperties GraphQL { get; }
 
         void Trace(string message);
 

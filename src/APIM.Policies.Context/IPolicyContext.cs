@@ -2,6 +2,6 @@
 {
     public interface IPolicyContext
     {
-
+        public IResponse Response { get; }
     }
 }

@@ -2,8 +2,7 @@
 
 internal class Expressions
 {
-    //TODO: return context.Response.StatusCode >= 400
-    public static bool ResponseIsError(IPolicyContext context) => true;
+    public static bool ResponseIsError(IPolicyContext context) => context.Response.StatusCode >= 400;
 
     public static string TransformResponse(IPolicyContext context)
     {

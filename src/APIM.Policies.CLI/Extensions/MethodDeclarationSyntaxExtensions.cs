@@ -1,6 +1,7 @@
 ﻿using APIM.Policies.CLI.Models;
 using APIM.Policies.Context.Abstractions;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace APIM.Policies.CLI.Extensions;
@@ -26,7 +27,8 @@ internal static class MethodDeclarationSyntaxExtensions
     {
         if (method.ParameterList.Parameters.Count != 1 ||
             method.ParameterList.Parameters[0].Identifier.ValueText != "context" ||
-            method.ReturnType.ToString() == "void")
+            (method.ReturnType is PredefinedTypeSyntax predefinedType && predefinedType.Keyword.IsKind(SyntaxKind.VoidKeyword)) ||
+            !method.Modifiers.Any(SyntaxKind.StaticKeyword))
         {
             return false;
         }

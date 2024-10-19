@@ -340,3 +340,6 @@ MigrationBackup/
 
 # Generated APIM policy files
 *.generated.cshtml
+
+# Local files
+*.local.*

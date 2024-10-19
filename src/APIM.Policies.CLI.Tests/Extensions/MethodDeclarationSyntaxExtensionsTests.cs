@@ -14,7 +14,7 @@ public class MethodDeclarationSyntaxExtensionsTests
         var source = """
             internal class ClassName
             {
-                public static bool MethodName(IPolicyContext context)
+                public static bool MethodName(IProxyRequestContext context)
                 {
                     return true;
                 }
@@ -42,7 +42,7 @@ public class MethodDeclarationSyntaxExtensionsTests
         var source = """
             internal class ClassName
             {
-                public static bool MethodName(IPolicyContext context)
+                public static bool MethodName(IProxyRequestContext context)
                 {
                     var result = true;
                     // A comment
@@ -74,7 +74,7 @@ public class MethodDeclarationSyntaxExtensionsTests
         var source = """
             internal class ClassName
             {
-                public static bool MethodName(IPolicyContext context) => true;
+                public static bool MethodName(IProxyRequestContext context) => true;
             }
             """;
         var method = await SyntaxHelper.CreateMethodDeclarationSyntaxAsync(source);
@@ -95,7 +95,7 @@ public class MethodDeclarationSyntaxExtensionsTests
             {
                 internal class ClassName
                 {
-                    public static bool MethodName(IPolicyContext context) => true;
+                    public static bool MethodName(IProxyRequestContext context) => true;
                 }
             }
             """;
@@ -117,7 +117,7 @@ public class MethodDeclarationSyntaxExtensionsTests
             namespace A.Namespace;
             internal class ClassName
             {
-                public static bool MethodName(IPolicyContext context) => true;
+                public static bool MethodName(IProxyRequestContext context) => true;
             }
             """;
 
@@ -137,7 +137,7 @@ public class MethodDeclarationSyntaxExtensionsTests
         var source = """
             internal class ClassName
             {
-                public static bool MethodName(IPolicyContext context) => true;
+                public static bool MethodName(IProxyRequestContext context) => true;
             }
             """;
 
@@ -151,13 +151,13 @@ public class MethodDeclarationSyntaxExtensionsTests
     }
 
     [TestMethod]
-    public async Task IsPolicyExpression_MethodHasOneArgumentOfTypeIPolicyContextAndNameContext_TrueReturned()
+    public async Task IsPolicyExpression_MethodHasOneArgumentOfTypeIProxyRequestContextAndNameContext_TrueReturned()
     {
         //Arrange
         var source = """
             internal class ClassName
             {
-                public static bool MethodName(IPolicyContext context) => return true;
+                public static bool MethodName(IProxyRequestContext context) => return true;
             }
             """;
         var (syntax, model) = await SyntaxHelper.CreateMethodDeclarationSyntaxAndSemanticModelAsync(source);
@@ -170,13 +170,13 @@ public class MethodDeclarationSyntaxExtensionsTests
     }
 
     [TestMethod]
-    public async Task IsPolicyExpression_MethodHasPolicyContextArgumentWithFullname_TrueReturned()
+    public async Task IsPolicyExpression_MethodHasContextArgumentWithFullTypeName_TrueReturned()
     {
         //Arrange
         var source = """
             internal class ClassName
             {
-                public static bool MethodName(APIM.Policies.Context.IPolicyContext context) => return true;
+                public static bool MethodName(APIM.Policies.Context.IProxyRequestContext context) => return true;
             }
             """;
         var (syntax, model) = await SyntaxHelper.CreateMethodDeclarationSyntaxAndSemanticModelAsync(source);
@@ -189,13 +189,13 @@ public class MethodDeclarationSyntaxExtensionsTests
     }
 
     [TestMethod]
-    public async Task IsPolicyExpression_MethodHasOneArgumentOfTypeIPolicyContextButNameIsNotContext_TrueReturned()
+    public async Task IsPolicyExpression_MethodHasOneArgumentOfTypeIProxyRequestContextButNameIsNotContext_TrueReturned()
     {
         //Arrange
         var source = """
             internal class ClassName
             {
-                public static bool MethodName(IPolicyContext notContext) => return true;
+                public static bool MethodName(IProxyRequestContext notContext) => return true;
             }
             """;
         var (syntax, model) = await SyntaxHelper.CreateMethodDeclarationSyntaxAndSemanticModelAsync(source);
@@ -252,7 +252,7 @@ public class MethodDeclarationSyntaxExtensionsTests
         var source = """
             internal class ClassName
             {
-                public static void MethodName(IPolicyContext context) {}
+                public static void MethodName(IProxyRequestContext context) {}
             }
             """;
         var (syntax, model) = await SyntaxHelper.CreateMethodDeclarationSyntaxAndSemanticModelAsync(source);
@@ -271,7 +271,7 @@ public class MethodDeclarationSyntaxExtensionsTests
         var source = """
             internal class ClassName
             {
-                public static bool MethodName(IPolicyContext context) => true;
+                public static bool MethodName(IProxyRequestContext context) => true;
             }
             """;
 
@@ -298,7 +298,7 @@ public class MethodDeclarationSyntaxExtensionsTests
             namespace A.Namespace;
             internal class ClassName
             {
-                public static bool MethodName(IPolicyContext context)
+                public static bool MethodName(IProxyRequestContext context)
                 {
                     return true;
                 }

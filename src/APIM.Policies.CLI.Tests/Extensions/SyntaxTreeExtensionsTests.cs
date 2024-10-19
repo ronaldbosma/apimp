@@ -18,7 +18,7 @@ public class SyntaxTreeExtensionsTests
             namespace A.Namespace;
             internal class ClassName
             {
-                public static bool MethodName(IPolicyContext context) => true;
+                public static bool MethodName(IProxyRequestContext context) => true;
             }
             """;
 
@@ -45,9 +45,9 @@ public class SyntaxTreeExtensionsTests
             namespace A.Namespace;
             internal class ClassName
             {
-                public static bool MethodName1(IPolicyContext context) => true;
-                public static bool MethodName2(IPolicyContext context) => true;
-                public static bool MethodName3(IPolicyContext context) => true;
+                public static bool MethodName1(IProxyRequestContext context) => true;
+                public static bool MethodName2(IProxyRequestContext context) => true;
+                public static bool MethodName3(IProxyRequestContext context) => true;
             }
             """;
 
@@ -76,15 +76,15 @@ public class SyntaxTreeExtensionsTests
             namespace A.Namespace;
             internal class ClassName1
             {
-                public static bool MethodName(IPolicyContext context) => true;
+                public static bool MethodName(IProxyRequestContext context) => true;
             }
             internal class ClassName2
             {
-                public static bool MethodName(IPolicyContext context) => true;
+                public static bool MethodName(IProxyRequestContext context) => true;
             }
             internal class ClassName3
             {
-                public static bool MethodName(IPolicyContext context) => true;
+                public static bool MethodName(IProxyRequestContext context) => true;
             }
             """;
 

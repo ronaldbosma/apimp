@@ -29,13 +29,13 @@ internal static class SyntaxHelper
 
     public static SemanticModel CreateSemanticModel(SyntaxTree syntaxTree)
     {
-        // Add an implicit using for APIM.Policies.Context so we can use IPolicyContext in code snippets without having to specify the name
-        var implicitUsings = CSharpSyntaxTree.ParseText($"global using {typeof(IPolicyContext).Namespace};");
+        // Add an implicit using for APIM.Policies.Context so we can use IProxyRequestContext in code snippets without having to specify the name
+        var implicitUsings = CSharpSyntaxTree.ParseText($"global using {typeof(IProxyRequestContext).Namespace};");
         
-        // We load the assembly containing IPolicyContext so we can reference it in our code snippets.
-        var metadataReference = MetadataReference.CreateFromFile(typeof(IPolicyContext).Assembly.Location);
+        // We load the assembly containing IProxyRequestContext so we can reference it in our code snippets.
+        var metadataReference = MetadataReference.CreateFromFile(typeof(IProxyRequestContext).Assembly.Location);
 
-        // Create the semantic model using the source syntax tree, implicint usings and assembly with IPolicyContext
+        // Create the semantic model using the source syntax tree, implicint usings and assembly with IProxyRequestContext
         var compilation = CSharpCompilation.Create("TestCompilation", [syntaxTree, implicitUsings], [metadataReference]);
         return compilation.GetSemanticModel(syntaxTree);
     }

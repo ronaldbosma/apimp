@@ -2,8 +2,8 @@
 
 internal class PostEchoConditions
 {
-    public static bool ResponseIsBadRequest(IPolicyContext context) => context.Response.StatusCode == 400;
+    public static bool ResponseIsBadRequest(IProxyRequestContext context) => context.Response.StatusCode == 400;
 
-    public static bool ResponseIsNotFound(IPolicyContext context) => 
+    public static bool ResponseIsNotFound(IProxyRequestContext context) => 
         context.Response.StatusCode == 404;
 }

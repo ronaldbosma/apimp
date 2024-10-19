@@ -38,7 +38,7 @@ internal static class MethodDeclarationSyntaxExtensions
         }
 
         var parameterSymbloInfo = model.GetSymbolInfo(parameterType);
-        return parameterSymbloInfo.Symbol?.ToDisplayString() == typeof(IPolicyContext).FullName;
+        return parameterSymbloInfo.Symbol?.ToDisplayString() == typeof(IProxyRequestContext).FullName;
     }
 
     public static string GetFullName(this MethodDeclarationSyntax method, SemanticModel model)

@@ -1,6 +1,6 @@
 ﻿namespace APIM.Policies.Context
 {
-    public interface IPolicyContext
+    public interface IProxyRequestContext
     {
         public IResponse Response { get; }
     }

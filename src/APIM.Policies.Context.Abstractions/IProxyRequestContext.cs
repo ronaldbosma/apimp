@@ -2,6 +2,38 @@
 {
     public interface IProxyRequestContext
     {
-        public IResponse Response { get; }
+        Guid RequestId { get; }
+
+        DateTime Timestamp { get; }
+
+        IRequest Request { get; }
+
+        IResponse Response { get; }
+
+        IApi Api { get; }
+
+        IOperation Operation { get; }
+
+        ISubscription Subscription { get; }
+
+        IUser User { get; }
+
+        IProduct Product { get; }
+
+        ProxyError LastError { get; }
+
+        IDeployment Deployment { get; }
+
+        IReadOnlyDictionary<string, object> Variables { get; }
+
+        bool Tracing { get; }
+
+        TimeSpan Elapsed { get; }
+
+        IGraphQLProperties GraphQL { get; }
+
+        void Trace(string message);
+
+        void Trace(string source, object data);
     }
 }

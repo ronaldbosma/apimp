@@ -1,9 +1,5 @@
 ﻿using APIM.Policies.CLI.Analyzers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using APIM.Policies.CLI.Generators;
 
 namespace APIM.Policies.CLI.Commands;
 
@@ -22,13 +18,7 @@ internal class MergeCommand : AsyncCommand<MergeCommandSettings>
         var policyExpressions = await ProjectAnalyzer.GetPolicyExpressionsAsync(settings.Project);
         var policyFiles = await PolicyFilesAnalyzer.GetPolicyFilesWithExpressionReferences(target!, settings.Include!, settings.Exclude);
 
-        foreach (var policyFile in policyFiles)
-        {
-            foreach (var reference in policyFile.PolicyExpressionReferences)
-            {
-                var policyExpression = policyExpressions[reference];
-            }
-        }
+        await PolicyFileGenerator.MergePolicyExpressionsInPolicyFiles(policyExpressions, policyFiles);
 
         return 0;
     }

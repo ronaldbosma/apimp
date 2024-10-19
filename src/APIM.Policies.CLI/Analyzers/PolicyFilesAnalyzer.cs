@@ -34,6 +34,7 @@ internal class PolicyFilesAnalyzer
                 {
                     Name = Path.GetFileName(filePath),
                     FullName = filePath,
+                    Content = content,
                     PolicyExpressionReferences = references
                 });
             }

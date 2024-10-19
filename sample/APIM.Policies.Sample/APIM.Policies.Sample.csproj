@@ -5,15 +5,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\APIM.Policies.Context\APIM.Policies.Context.csproj" />
-  </ItemGroup>
   
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
       <_Parameter1>$(AssemblyName).Tests</_Parameter1>
       <!-- We use the value of AssemblyName to declare the value of the attribute -->
     </AssemblyAttribute>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\APIM.Policies.Context.Abstractions\APIM.Policies.Context.Abstractions.csproj" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace APIM.Policies.Context;
+﻿namespace APIM.Policies.Context.Abstractions;
 
 public interface IResponse
 {

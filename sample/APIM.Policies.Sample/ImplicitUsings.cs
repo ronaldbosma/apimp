@@ -1,1 +1,1 @@
-﻿global using APIM.Policies.Context;
+﻿global using APIM.Policies.Context.Abstractions;

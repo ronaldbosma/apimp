@@ -50,7 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\APIM.Policies.Context\APIM.Policies.Context.csproj" />
+    <ProjectReference Include="..\APIM.Policies.Context.Abstractions\APIM.Policies.Context.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using APIM.Policies.Context;
+﻿using APIM.Policies.Context.Abstractions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -29,7 +29,7 @@ internal static class SyntaxHelper
 
     public static SemanticModel CreateSemanticModel(SyntaxTree syntaxTree)
     {
-        // Add an implicit using for APIM.Policies.Context so we can use IProxyRequestContext in code snippets without having to specify the name
+        // Add an implicit using for APIM.Policies.Context.Abstractions so we can use IProxyRequestContext in code snippets without having to specify the name
         var implicitUsings = CSharpSyntaxTree.ParseText($"global using {typeof(IProxyRequestContext).Namespace};");
         
         // We load the assembly containing IProxyRequestContext so we can reference it in our code snippets.
